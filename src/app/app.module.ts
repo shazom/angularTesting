@@ -19,7 +19,7 @@ import { PanelModule } from "primeng/components/panel/panel";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule, Routes } from "@angular/router/";
 
-import { PanelMenuModule, MenuItem, ToolbarModule, ScheduleModule, ChipsModule, InputTextModule } from 'primeng/primeng';
+import { PanelMenuModule, MenuItem, ToolbarModule, ScheduleModule, ChipsModule, InputTextModule, DropdownModule, DialogModule, InplaceModule } from 'primeng/primeng';
 import { HeaderComponent } from './header/header.component';
 import { EmptyRowsComponent } from './empty-rows/empty-rows.component';
 import { DataTableComponent } from './data-table/data-table.component';
@@ -28,6 +28,9 @@ import { LoginComponent } from './login/login.component';
 
 
 import { routes } from './app.routes';
+import { DataViewComponent } from './data-view/data-view.component';
+import { DataFilterComponent } from './data-filter/data-filter.component';
+import { LoadInvoiceComponent } from './load-invoice/load-invoice.component';
 // import { ProgressbarModule, PopoverModule } from 'ng2-bootstrap';
 
 @NgModule({
@@ -38,7 +41,10 @@ import { routes } from './app.routes';
     EmptyRowsComponent,
     DataTableComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    DataViewComponent,
+    DataFilterComponent,
+    LoadInvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,10 @@ import { routes } from './app.routes';
     PanelMenuModule,
     InputTextModule,
     PanelModule,
+    InplaceModule,
+    DropdownModule,
     MenubarModule,
+    DialogModule,
     ScheduleModule,
     BrowserAnimationsModule,
     CalendarModule,

@@ -1,0 +1,17 @@
+#sapak-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /*cursor:url('./edit_icon.png');*/
+}
+
+#sapak-selector {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#sapak-selector-list {
+  position: relative;
+  padding-top: 33px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+}

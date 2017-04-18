@@ -1,0 +1,24 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div id="month-label" class="ui-g-4">
+      חודש דיווח
+    </div>
+    <div class="ui-g-7">
+      <div class="ui-g-6">
+        <p-dropdown [options]="months" [(ngModel)]="selectedMonth" [style]="{width:'100px', position:'fixed'}"></p-dropdown>
+      </div>
+      <div class="ui-g-6">
+        <p-dropdown [options]="years" [(ngModel)]="selectedYear" [style]="{width:'100px', position:'fixed'}"></p-dropdown>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g-12">
+    <div id="month-label" class="ui-g-4">
+      חשבונית מספר
+    </div>
+    <div class="ui-g-7">
+      <input type="text" [style]="{width:'100px', position:'fixed'}" pInputText />
+    </div>
+  </div>
+</div>

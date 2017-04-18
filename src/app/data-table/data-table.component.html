@@ -1,9 +1,18 @@
+<app-data-filter></app-data-filter>
 <p-dataTable [value]="data" [emptyMessage]="tableEmptyMessage" [responsive]=true>
   <p-column field="date" header="תאריך"></p-column>
   <p-column field="type" header="סוג"></p-column>
   <p-column field="invoice" header="חשבונית"></p-column>
   <p-column field="numLines" header="מספר שורות"></p-column>
   <p-column field="status" header="סטטוס"></p-column>
-  <p-column field="linkInvoice" header="מדיה"></p-column>
-  <p-column field="linkMedia" header="חשבונית"></p-column>
+  <p-column field="linkInvoice" header="מדיה">
+     <ng-template pTemplate="body" let-col let-data="rowData">
+      <span><a href={{data[col.field]}} *ngIf="data[col.field]">קישור</a></span>
+    </ng-template>
+  </p-column>
+  <p-column field="linkMedia" header="חשבונית">
+    <ng-template pTemplate="body" let-col let-data="rowData">
+      <span><a href={{data[col.field]}} *ngIf="data[col.field]">קישור</a></span>
+    </ng-template>
+  </p-column>
 </p-dataTable>
