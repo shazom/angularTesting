@@ -1,3 +1,12 @@
 #month-label {
   padding-top: 20px;
 }
+
+/*div {
+  background-color: #ededed;
+  border: 1px solid #fafafa;
+}*/
+
+.invoice-input {
+  width: 100%;
+}

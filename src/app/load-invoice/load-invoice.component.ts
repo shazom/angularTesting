@@ -10,8 +10,10 @@ export class LoadInvoiceComponent implements OnInit {
 
   months: SelectItem[];
   years: SelectItem[];
+  invoiceTypes: SelectItem[];
   selectedMonth: number;
   selectedYear: number;
+  selectedInvoiceType: number;
 
   constructor() {
 
@@ -37,8 +39,17 @@ export class LoadInvoiceComponent implements OnInit {
 
     this.years = Array.from({ length: 5 }, (emptyValue, index) => { let year = firstYear + index + ""; return { 'label': year, 'value': year } });
 
-    this.selectedMonth = date.getMonth()+1;
+    this.selectedMonth = date.getMonth() + 1;
     this.selectedYear = date.getFullYear();
+
+    this.invoiceTypes = [
+      { label: "מותר לדיווח", value: "0" },
+      { label: "אסור לדיווח", value: "1" }
+    ];
+  }
+
+  validate() {
+    console.log("validate");
   }
 
 }

@@ -1,6 +1,7 @@
 <div class="ui-g">
 
-  <p-dialog id="sapak-selector-list" header="טעינת חשבונית" [(visible)]="dialogIsOpened" modal="true" width="500" height="600" responsive="true" rtl="rtl">
+  <p-dialog id="sapak-selector-list" header="טעינת חשבונית" [(visible)]="dialogIsOpened" modal="false" width="500" height="600"
+    responsive="true" rtl="rtl">
     <app-load-invoice></app-load-invoice>
   </p-dialog>
 
@@ -20,7 +21,7 @@
         </ng-template>
       </div>
 
-      <div *ngIf="true ||selectedSapak">
+      <div *ngIf="selectedSapak">
 
         <div class="ui-g">
           <button pButton type="button" icon="fa-plus-circle" iconPos="right" label="טען חשבונית" (click)="showDialog()"></button>

@@ -5,7 +5,7 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { Routes } from '@angular/router/';
 
 export const routes: Routes = [
-    { path: '', redirectTo:'main', pathMatch:'full' },
+    { path: '', redirectTo:'login', pathMatch:'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'main', component: DataViewComponent }
+    { path: 'main', component: LoginComponent }
 ];

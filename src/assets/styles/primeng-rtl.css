@@ -1,9 +1,15 @@
- HTML 
 
-body {
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+body,
+html {
+  font-family: 'Arimo', sans-serif !important;
   direction: rtl;
 }
 
+body .ui-widget {
+  font-family: 'Arimo', sans-serif !important;
+}
+ 
 body .ui-g-1,
 .ui-g-2,
 .ui-g-3,
@@ -28,6 +34,7 @@ body .ui-g-1,
 .ui-g-11-nopad,
 .ui-g-12-nopad {
   float: right;
+   font-family: 'Arimo', sans-serif;
 }
 
 
@@ -64,4 +71,21 @@ body .ui-menu-list {
 
 body .ui-menu.ui-menubar .ui-menubar-root-list>li>a>.ui-submenu-icon {
   float: right;
+}
+
+/* Dialog */
+.ui-dialog .ui-dialog-titlebar-close {
+  float: left;
+  
+}
+
+/* Growl */
+.ui-growl-icon-close {
+  left:4px;
+  right:inherit;
+}
+
+.ui-growl {
+  left:20px;
+  right:inherit;
 }
