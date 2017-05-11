@@ -1,5 +1,6 @@
 import { SelectItem } from 'primeng/primeng';
 import { Component, OnInit } from '@angular/core';
+import { ServiceName } from "app/app-config.service";
 
 @Component({
   selector: 'app-load-invoice',
@@ -8,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadInvoiceComponent implements OnInit {
 
+  openDialog: boolean = true;  
   months: SelectItem[];
   years: SelectItem[];
   invoiceTypes: SelectItem[];
   selectedMonth: number;
   selectedYear: number;
   selectedInvoiceType: number;
+
+  public service = ServiceName;
 
   constructor() {
 
@@ -47,6 +51,17 @@ export class LoadInvoiceComponent implements OnInit {
       { label: "אסור לדיווח", value: "1" }
     ];
   }
+
+  onUploadError(event) {
+    console.error(event);
+  }
+
+  onUploadSuccess(event) {
+    console.log(event);
+  }
+  
+
+
 
   validate() {
     console.log("validate");

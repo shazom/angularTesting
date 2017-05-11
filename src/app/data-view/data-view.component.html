@@ -1,41 +1,70 @@
 <div class="ui-g">
 
-  <p-dialog id="sapak-selector-list" header="טעינת חשבונית" [(visible)]="dialogIsOpened" modal="false" width="500" height="600"
-    responsive="true" rtl="rtl">
+  <p-dialog
+    id="sapak-selector-list"
+    header="טעינת חשבונית"
+    [(visible)]="dialogIsOpened"
+    modal="false"
+    width="500"
+    responsive="true"
+    rtl="rtl"
+  >
     <app-load-invoice></app-load-invoice>
-  </p-dialog>
+    </p-dialog>
 
-  <div class="ui-g-12">
-    <div class="ui-g-2"></div>
-
-    <div class="ui-g-8">
-
-      <div class="ui-g">
-        <h1 id="sapak-title" *ngIf="selectedSapak else dropdownBlock" (click)="selectedSapak = null">
-          {{selectedSapak ? (selectedSapak.name + ' | ' + selectedSapak.id) : ""}}
-        </h1>
-        <ng-template #dropdownBlock>
-          <h1 id="sapak-selector">בחר ספק מתוך</h1>
-          <!--<h2 id="sapak-selector sapak-selector-replace">החלף ספק</h2>-->
-          <p-dropdown id="sapak-selector-list" [options]="sapakim" [(ngModel)]="selectedSapak" placeholder="רשימת ספקים"></p-dropdown>
-        </ng-template>
-      </div>
-
-      <div *ngIf="selectedSapak">
-
-        <div class="ui-g">
-          <button pButton type="button" icon="fa-plus-circle" iconPos="right" label="טען חשבונית" (click)="showDialog()"></button>
-          <button pButton type="button" icon="fa-print" iconPos="right" label="הדפס"></button>
-        </div>
-
-        <div class="ui-g">
-          <app-data-table></app-data-table>
-        </div>
-
-      </div>
-
+    <div class="ui-g-12">
       <div class="ui-g-2"></div>
 
-    </div>
+      <div class="ui-g-8">
 
-  </div>
+        <div class="ui-g">
+          <h1
+            id="sapak-title"
+            *ngIf="selectedSapak else dropdownBlock"
+            (click)="selectedSapak = null"
+          >
+            {{selectedSapak ? (selectedSapak.name + ' | ' + selectedSapak.id) : ""}}
+            </h1>
+            <ng-template #dropdownBlock>
+              <h1 id="sapak-selector">בחר ספק מתוך</h1>
+              <!--<h2 id="sapak-selector sapak-selector-replace">החלף ספק</h2>-->
+              <p-dropdown
+                id="sapak-selector-list"
+                [options]="sapakim"
+                [(ngModel)]="selectedSapak"
+                placeholder="רשימת ספקים"
+              ></p-dropdown>
+            </ng-template>
+        </div>
+
+        <div *ngIf="true || selectedSapak">
+
+          <div class="ui-g">
+            <button
+              pButton
+              type="button"
+              icon="fa-plus-circle"
+              iconPos="right"
+              label="טען חשבונית"
+              (click)="showDialog()"
+            ></button>
+              <button
+                pButton
+                type="button"
+                icon="fa-print"
+                iconPos="right"
+                label="הדפס"
+              ></button>
+          </div>
+
+          <div class="ui-g">
+            <app-data-table></app-data-table>
+          </div>
+
+        </div>
+
+        <div class="ui-g-2"></div>
+
+      </div>
+
+    </div>

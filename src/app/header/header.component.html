@@ -3,6 +3,6 @@
     <p-menubar [model]="items" [style]="{'border':'0px'}"></p-menubar>
   </div>
   <div class="ui-toolbar-group-left">
-    <div class="fa fa-user-o"></div>
+    <div *ngIf="loggedIn" class="fa fa-user-o" (click)="logout()"></div>
   </div>
 </p-toolbar>

@@ -7,6 +7,10 @@
   border: 1px solid #fafafa;
 }*/
 
+.upload-area {
+  width:100%
+}
+
 .invoice-input {
   width: 100%;
 }

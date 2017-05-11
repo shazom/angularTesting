@@ -1,23 +1,42 @@
 import { MenuItem } from 'primeng/primeng';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from "app/core/user.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  public items: MenuItem[];
+    public items: MenuItem[];
 
-  constructor() { }
+    private loggedIn: boolean = false;
 
-  ngOnInit() {
+    constructor(
+        private userService: UserService
+    ) { }
 
-     this.items = [
+    private checkLogIn(): void {
+        
+        this.userService.isLoggedIn().subscribe(
+            value => { this.loggedIn = value;}
+        );
+    }
+
+    private logout() {
+        this.userService.logout();
+    }
+
+
+    ngOnInit() {
+
+        this.checkLogIn();
+
+        this.items = [
             {
                 icon: 'fa-credit-card',
-                url: "http://localhost:4200/"
+                url: "/main/"
                 // label: 'מערכת ספקים',
             },
             {
@@ -39,6 +58,7 @@ export class HeaderComponent implements OnInit {
 
         ];
 
-  }
+
+    }
 
 }

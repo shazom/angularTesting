@@ -1,0 +1,20 @@
+<p-fileUpload
+  [name]="name"
+  [url]="url"
+  [multiple]="multiple"
+  [accept]="accept"
+  [chooseLabel]="chooseLabel"
+  [uploadLabel]="uploadLabel"
+  [cancelLabel]="cancelLabel"
+  [invalidFileTypeMessageSummary]="invalidFileTypeMessageSummary"
+  [invalidFileTypeMessageDetail]="invalidFileTypeMessageDetail"
+  (onUpload)="onUpload.emit($event)"
+  (onError)="onError.emit($event)"
+  (onSelect)="onSelect.emit($event)"
+  (onBeforeUpload)="onBeforeUpload.emit($event)"
+  (onBeforeSend)="onBeforeSend.emit($event)"
+>
+  <ng-template pTemplate="content">
+    <!--<div *ngIf="!filesUploaded?.length">לחץ או גרור קבצים להעלאה לכאן</div>-->
+  </ng-template>
+  </p-fileUpload>

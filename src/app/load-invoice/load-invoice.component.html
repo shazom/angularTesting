@@ -1,48 +1,82 @@
 <div class="ui-g">
+
   <div class="ui-g-12">
-    <div id="month-label" class="ui-g-4">
-      חודש דיווח
+    <div id="month-label"
+         class="ui-g-4"> חודש דיווח
     </div>
     <div class="ui-g-8">
       <div class="ui-g-6">
-        <p-dropdown class="invoice-input" [options]="months" [(ngModel)]="selectedMonth" [style]="{width:'130px'}"></p-dropdown>
+        <p-dropdown class="invoice-input"
+                    [options]="months"
+                    [(ngModel)]="selectedMonth"
+                    [style]="{width:'130px'}">
+        </p-dropdown>
       </div>
       <div class="ui-g-6">
-        <p-dropdown class="invoice-input" [options]="years" [(ngModel)]="selectedYear" [style]="{width:'130px'}"></p-dropdown>
+        <p-dropdown class="invoice-input"
+                    [options]="years"
+                    [(ngModel)]="selectedYear"
+                    [style]="{width:'130px'}">
+        </p-dropdown>
       </div>
     </div>
   </div>
 
   <div class="ui-g-12">
-    <div id="month-label" class="ui-g-4">
-      חשבונית מספר
+    <div id="month-label"
+         class="ui-g-4">חשבונית מספר
     </div>
     <div class="ui-g-8">
-      <input class="invoice-input" type="text" pInputText />
+      <input class="invoice-input"
+             type="text"
+             pInputText />
     </div>
   </div>
 
   <div class="ui-g-12">
-    <div id="month-label" class="ui-g-4">
-      סוג חשבונית
+    <div id="month-label"
+         class="ui-g-4">סוג חשבונית
     </div>
     <div class="ui-g-8">
-      <p-dropdown class="invoice-input" [options]="invoiceTypes" [(ngModel)]="selectedInvoiceType" [style]="{width:'100%'}"></p-dropdown>
+      <p-dropdown class="invoice-input"
+                  [options]="invoiceTypes"
+                  [(ngModel)]="selectedInvoiceType"
+                  [style]="{width:'100%'}">
+      </p-dropdown>
     </div>
   </div>
 
-  <!--<div class="ui-g-6">
-    <p-fileUpload name="mediaFiles[]" url="http://localhost:3000/upload"></p-fileUpload>
+  <div class="ui-g-12">
+    <app-upload-file id="uploadArea"
+                     [serviceName]="service.invoices"
+                     fileLimit="2"
+                     (onError)="onUploadError($event)"
+                     (onUpload)="onUploadSuccess($event)">
+    </app-upload-file>
   </div>
-  <div class="ui-g-6">
-    <p-fileUpload name="invoiceFiles[]" url="http://localhost:3000/upload"></p-fileUpload>
-  </div>-->
 
-  <div class="ui-g-6">
-    <button pButton type="button" (click)="validate()" label="בדוק ושלח"></button>
+  <div class="ui-g-12">
+
+    <div class="ui-g-6">
+      <button pButton
+              type="button"
+              (click)="validate()"
+              label="בדוק ושלח"
+              [style]="{width:'100%'}">
+      </button>
+    </div>
+
+    <div class="ui-g-6">
+      <button pButton
+              type="button"
+              label="נקה"
+              [style]="{width:'100%'}">
+      </button>
+    </div>
+
   </div>
-  <div class="ui-g-6">
-    <button pButton type="button" label="נקה"></button>
-  </div>
+
+
+
 
 </div>

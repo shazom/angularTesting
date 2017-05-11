@@ -17,14 +17,17 @@ import { EmptyRowsComponent } from './empty-rows/empty-rows.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import { routes } from './app.routes';
 import { DataViewComponent } from './data-view/data-view.component';
 import { DataFilterComponent } from './data-filter/data-filter.component';
 import { LoadInvoiceComponent } from './load-invoice/load-invoice.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 // import { ProgressbarModule, PopoverModule } from 'ng2-bootstrap';
 
+import { Http, XHRBackend, RequestOptions } from "@angular/http";
+import { httpFactory } from "app/core/http.factory";
+
 import { SharedModule } from './shared/shared.module'
+import { AppRoutingModule } from "app/app-routing/app-routing.module";
 
 @NgModule({
 
@@ -48,7 +51,6 @@ import { SharedModule } from './shared/shared.module'
     ReactiveFormsModule,
     FileUploadModule,
     HttpModule,
-    RouterModule.forRoot(routes),
     PanelMenuModule,
     InputTextModule,
     PanelModule,
@@ -63,9 +65,16 @@ import { SharedModule } from './shared/shared.module'
     ToolbarModule,
 
     SharedModule,
+    AppRoutingModule,
     CoreModule
   ],
-  providers: [AppConfig],
+  providers: [AppConfig,
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

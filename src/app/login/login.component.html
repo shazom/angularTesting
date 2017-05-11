@@ -1,26 +1,49 @@
+<!--<pre>
+  loginForm.valid - {{loginForm.valid}}  
+  ===============================================
+  username.valid - {{usernameControl.valid}}
+  username.isValid - {{isValid(usernameControl)}}
+  username.error - {{getErrorMessage(usernameControl)}}
+  ===============================================
+  password.valid - {{passwordControl.valid}}
+  password.isValid - {{isValid(passwordControl)}}
+  password.error - {{getErrorMessage(passwordControl)}}
+  ===============================================
+  sapak.valid - {{sapakControl.valid}}  
+  sapak.isValid - {{isValid(sapakControl)}}
+  sapak.error - {{getErrorMessage(sapakControl)}}
+  </pre>-->
 <div class="ui-g-12">
+
+
   <div class="ui-g-4"></div>
   <div class="ui-g-3">
+
     <p-panel id="panel" header="כניסה למערכת">
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" >
         <div class="ui-g">
           <div class="ui-g-12">
-            <div class="ui-g-4 label">
-              שם משתמש
-            </div>
-            <div class="ui-g-8">
-              <input type="text" formControlName="username" placeholder="הזן שם משתמש..." pInputText>
-            </div>
+            <input class="ui-g-12 ui" type="text" formControlName="username" placeholder="שם משתמש" pInputText #username>
           </div>
-        <!--<div class="ui-g-12">-->          <!--<div class="ui-g-12">-->
-          <!--<span *ngIf="name.invalid && name.dirty" style="color:red">חובה להזין שם משתמש!</span>-->
-          <!--</div>-->
+            <app-popover *ngIf="!isValid(usernameControl)" [message]="getErrorMessage(usernameControl, username.placeholder)"></app-popover>
           <div class="ui-g-12">
+            <input class="ui-g-12" type="password" formControlName="password" placeholder="סיסמא" pInputText #password>
+          </div>
+          <div *ngIf="!isValid(passwordControl)" class="ui-g-12">
+            <app-popover [message]="getErrorMessage(passwordControl, password.placeholder)"></app-popover>
+          </div>
+          <div class="ui-g-12">
+            <input class="ui-g-12" type="text" formControlName="sapak" placeholder="קוד ספק" pInputText #sapak>
+          </div>
+          <div *ngIf="!isValid(sapakControl)" class="ui-g-12">
+            <app-popover [message]="getErrorMessage(sapakControl, sapak.placeholder)"></app-popover>
+          </div>
+          <!--<div class="ui-g-12">
             <div class="ui-g-4 label">
               סיסמא
             </div>
             <div class="ui-g-8">
-              <input type="password" formControlName="password" placeholder="הזן סיסמא..." pInputText>
+              <input type="password" formControlName="password" placeholder="סיסמא" pInputText>
             </div>
           </div>
           <div class="ui-g-12">
@@ -28,93 +51,27 @@
               קוד ספק
             </div>
             <div class="ui-g-8">
-              <input type="text" formControlName="sapak" pInputText>
-            </div>
-          </div>
-          <!--<div formGroupName="address">
-            <div class="ui-g-12">
-              <div class="ui-g-4 label">
-                עיר
-              </div>
-              <div class="ui-g-8">
-                <input type="text" formControlName="city" pInputText>
-              </div>
-            </div>
-            <div class="ui-g-12">
-              <div class="ui-g-4 label">
-                רחוב
-              </div>
-              <div class="ui-g-8">
-                <input type="text" formControlName="street" pInputText>
-              </div>
-            </div>
-            <div class="ui-g-12">
-              <div class="ui-g-4 label">
-                טלפונים
-              </div>
-              <div class="ui-g-8">
-                <div formArrayName="phones">
-                  <input *ngFor="let phone of loginForm.get('address.phones').controls let i=index" type="text" [formControlName]="i" pInputText>
-                </div>
-              </div>
+              <input type="text" formControlName="sapak" placeholder="12345678" pInputText>
             </div>
           </div>-->
         </div>
 
-        <!--<div class="ui-g">
-        <pre>{{loginForm.value | json}}</pre>
-      </div>-->
 
-        <!--<div class="ui-g login-button">
-          <div class="ui-g-6">
-            <button class="ui-g-12" pButton type="button" label="טען" (click)="loadDefaultData() "></button>
-          </div>
-          <div class="ui-g-6 ">
-            <button class="ui-g-12" pButton type="button" label="נקה" (click)="reset() "></button>
-          </div>
-        </div>-->
 
         <div class="ui-g">
-          <button class="ui-g-12" pButton type="button" [label]="statusLabel" (click)="toggleStatus() "></button>
+          <button class="ui-g-12" type="button" pButton icon="fa-pencil" iconPos="left" label="נתוני טסט" (click)="loadDefaultData()"></button>          
         </div>
 
         <div class="ui-g login-button ">
-          <!--<button class="ui-g-12 " pButton type="button " label="כניסה " (click)="login() " [disabled]="loading "></button>-->
-          <button class="ui-g-12" type="submit" pButton label="כניסה" (click)="loadURL()"></button>
-          <!--<img *ngIf="loading " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="-->
+          <button class="ui-g-12" [disabled]="loading" type="submit" pButton [icon]="loading ? 'fa-spinner fa-spin fa-1x fa-fw' : 'fa-sign-in'" iconPos="left" label="כניסה"></button>          
         </div>
 
-        <!--<div class=" ui-g ">
-        <div *ngIf="error " class="alert alert-danger ">{{error}}</div>
-      </div>-->
-      
-      <!--/</div>-->
-
+        <div class="ui-g-12"  *ngIf="error">
+          <app-popover [message]="error"></app-popover>
+        </div>
 
       </form>
     </p-panel>
-  </div>
-</div>
 
-<pre>
- <code>
- loginForm Status : {{ loginForm.status }}
- --------------------------------------------------------
- loginForm valid : {{ loginForm.valid }}
- loginForm invalid : {{ loginForm.invalid }}
- loginForm pending : {{ loginForm.pending }}
- loginForm disabled: {{ loginForm.disabled }}
- --------------------------------------------------------
- loginForm valid : {{ loginForm.valid }}
- loginForm invalid: {{ loginForm.invalid }}
- --------------------------------------------------------
- username valid : {{ name.valid }}
- username invalid : {{ name.invalid }}
- --------------------------------------------------------
- password valid : {{ password.valid }}
- password invalid : {{ password.invalid }}
-</code>
-</pre>
-<div>
-  {{name.errors | json}}
+  </div>
 </div>
